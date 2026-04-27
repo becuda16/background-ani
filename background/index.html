@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Background Animado - Quadrados em Evidência</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            width: 100%;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: #000;
+            overflow: hidden;
+            position: relative;
+            font-family: 'Segoe UI', sans-serif;
+        }
+
+        /* CONTAINER DA FRASE */
+        .text-box {
+            position: relative;
+            z-index: 20; /* Texto acima de tudo */
+            padding: 12px 0;
+            border-top: 2px solid #fff;
+            border-bottom: 2px solid #fff;
+            background: rgba(0, 0, 0, 0.5); /* Fundo sutil para o texto não sumir */
+            backdrop-filter: blur(2px);
+        }
+
+        h1 {
+            font-size: 2.2rem;
+            color: #fff;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            font-weight: 700;
+            text-align: center;
+            margin: 0 30px;
+        }
+
+        /* SISTEMA DE QUADRADOS MAIS VISÍVEIS */
+        .squares {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+        }
+
+        .square {
+            position: absolute;
+            list-style: none;
+            display: block;
+            /* Aumentei a opacidade de 0.05 para 0.15 */
+            background: rgba(255, 255, 255, 0.15); 
+            border: 1px solid rgba(255, 255, 255, 0.2); /* Borda para dar definição */
+            bottom: -200px;
+            animation: animate 15s linear infinite;
+        }
+
+        /* CONFIGURAÇÃO DE CADA QUADRADO (Diferentes tamanhos e posições) */
+        .square:nth-child(1) { left: 5%; width: 100px; height: 100px; animation-delay: 0s; }
+        .square:nth-child(2) { left: 20%; width: 40px; height: 40px; animation-delay: 2s; animation-duration: 10s; }
+        .square:nth-child(3) { left: 45%; width: 150px; height: 150px; animation-delay: 4s; opacity: 0.1; }
+        .square:nth-child(4) { left: 70%; width: 60px; height: 60px; animation-delay: 0s; animation-duration: 18s; }
+        .square:nth-child(5) { left: 85%; width: 120px; height: 120px; animation-delay: 6s; }
+        .square:nth-child(6) { left: 33%; width: 30px; height: 30px; animation-delay: 1s; }
+        .square:nth-child(7) { left: 60%; width: 180px; height: 180px; animation-delay: 3s; animation-duration: 25s; opacity: 0.05; }
+        .square:nth-child(8) { left: 80%; width: 50px; height: 50px; animation-delay: 10s; }
+
+        @keyframes animate {
+            0% {
+                transform: translateY(0) rotate(0deg);
+                opacity: 0;
+            }
+            20% {
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(-1200px) rotate(360deg);
+                opacity: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <ul class="squares">
+        <li class="square"></li>
+        <li class="square"></li>
+        <li class="square"></li>
+        <li class="square"></li>
+        <li class="square"></li>
+        <li class="square"></li>
+        <li class="square"></li>
+        <li class="square"></li>
+    </ul>
+
+    <div class="text-box">
+        <h1>BACKGROUND ANIMADO</h1>
+    </div>
+
+</body>
+</html>
